@@ -3,7 +3,7 @@ from threading import Thread
 from flask import Flask
 import telebot
 
-TOKEN = "8816180255:AAECJ0hMs7ry7B859oRCvCvV1AUXrCwGAcg"
+TOKEN = "8816180255:AAECJOhMs7ry7B8S9oRCvCvViAUXrCWGAcg"
 bot = telebot.TeleBot(TOKEN)
 
 # Render Web Service ke liye chota sa Web Server
