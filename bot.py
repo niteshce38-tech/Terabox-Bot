@@ -1,4 +1,3 @@
-
 import os
 from threading import Thread
 from flask import Flask
@@ -7,7 +6,7 @@ import telebot
 TOKEN = "8816180255:AAECJ0hMs7ry7B859oRCvCvV1AUXrCwGAcg"
 bot = telebot.TeleBot(TOKEN)
 
-# Chota sa Web Server (Render ke liye zaroori hai)
+# Render Web Service ke liye chota sa Web Server
 app = Flask("")
 
 
@@ -20,7 +19,7 @@ def run_web():
   app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
 
 
-# Telegram Bot Logic
+# Telegram Bot Handlers
 @bot.message_handler(commands=["start"])
 def send_welcome(message):
   user_name = message.from_user.first_name
@@ -48,9 +47,8 @@ def default_text(message):
 
 
 if __name__ == "__main__":
-  # Web server ko alag thread mein chalayein
+  # Web server ko background thread mein start karein
   t = Thread(target=run_web)
   t.start()
-  print("Bot aur Web Server start ho gaye hain...")
+  print("Bot aur Web Server successfully start ho gaye hain...")
   bot.polling()
-  
